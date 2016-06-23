@@ -13,4 +13,4 @@ ways:
   2. Use the python script compileAndRun.py for controlling the build process
 	   and executing the maschine code.
 
-		 python compileAndRun
+		 python compileAndRun.py
