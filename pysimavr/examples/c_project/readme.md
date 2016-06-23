@@ -10,7 +10,7 @@ ways:
      builds your program and starts a python script that executes the elf file
 		 in pysimavr.
 
-	2. Use the python script compileAndRun.py for controlling the build process
+  2. Use the python script compileAndRun.py for controlling the build process
 	   and executing the maschine code.
 
 		 python compileAndRun
