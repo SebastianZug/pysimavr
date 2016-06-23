@@ -28,7 +28,15 @@ void init_timer(){
   TCCR0A |= (1 << WGM01) | (1 << WGM00);
   // this combination is for the standard 168/328/1280/2560
   // prescaler 64
-  TCCR0B |= (1 << CS01) | (1 << CS00);
+  // CS02 CS01  CS00
+  // 0 	  0 	  0 	Stop
+  // 0 	  0   	1 	CPU-clock speed
+  // 0   	1 	  0 	CPU-clock speed / 8
+  // 0   	1   	1 	CPU-clock speed / 64
+  // 1 	  0   	0 	CPU-clock speed / 256
+  // 1   	0   	1 	CPU-clock speed / 1024
+  TCCR0B |= (1 << CS01) | (1 << CS00);   // prescaler = 64
+  //TCCR0B |= (1 << CS01);                    // prescaler = 8
   // timer interrupt on
   TIMSK0 |= (1 << TOIE0);
 }
@@ -48,7 +56,7 @@ unsigned long millis()
 unsigned long micros() {
     unsigned long m;
     uint8_t oldSREG = SREG, t;
-     
+
     cli();
     m = timer0_overflow_count;
 #if defined(TCNT0)
@@ -58,7 +66,7 @@ unsigned long micros() {
 #else
     #error TIMER 0 not defined
 #endif
- 
+
 #ifdef TIFR0
     if ((TIFR0 & _BV(TOV0)) && (t & 255))
         m++;
@@ -67,5 +75,5 @@ unsigned long micros() {
         m++;
 #endif
     SREG = oldSREG;
-    return ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
+    return ((m << 8) + t) * (clockPrescaler / clockCyclesPerMicrosecond());
 }
