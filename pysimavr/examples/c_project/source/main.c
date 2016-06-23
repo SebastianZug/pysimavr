@@ -60,7 +60,7 @@ int main()
                   clockPrescaler, (float)F_CPU,
                   clockPrescaler *  1000000L / (float)F_CPU);
     printf("The micros() function executes up to 24 opcodes. Hence, we have to  \n");
-    printf("consider approximatly %2.0f us for this.\n", 24/(float)(clockCyclesPerMicrosecond()));
+    printf("consider approximately %2.0f us for this.\n", 24/(float)(clockCyclesPerMicrosecond()));
 
 
     printf("\nMEASUREMENT 2 - Check the runtime of a method \n");
@@ -89,10 +89,10 @@ int main()
     printf("--------------------------------------------------------------------\n");
     float myfloat =3.14159265359;
     start = micros();
-    fprintf(stdout,"Print arbitary float value = %1.8f\n", myfloat);
+    fprintf(stdout,"Print arbitrary float value = %1.8f\n", myfloat);
     stop = micros();
-    printf("Duration of a printf fload = %ld [us] \n",(stop - start));
-    printf("Suprised?\n");
+    printf("Duration of a printf float = %ld [us] \n",(stop - start));
+    printf("Surprised?\n");
 
     return 0;
 }
