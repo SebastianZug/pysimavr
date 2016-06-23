@@ -21,7 +21,7 @@ The small c project combines 2 specific tasks, a generic UART output
 and a two Timer0 based functions.  micro() is used to illustrate
 the use of pysimavr while "profiling" some code snippets. The output
 illustrates the limits of this method. Depending on the configuration of the
-timer the resolution of micro() is limited. The default parameters us a
+timer the resolution of micro() is 4, 8, 16 ... us. The default parameters applies a
 prescaler of 64, consequently we have a step width of 8us.
 
       ▶ python compileAndRun.py
