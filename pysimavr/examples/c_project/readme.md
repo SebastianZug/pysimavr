@@ -1,4 +1,5 @@
-##How to run the example
+How to run the example
+------
 
 Depending on your needs you can compile and run the project in two different
 ways:
@@ -15,7 +16,8 @@ ways:
 
 		 python compileAndRun.py
 
-##Output
+Output
+------
 
 The small c project combines 2 specific tasks, a generic UART output
 and a two Timer0 based functions.  micro() is used to illustrate
